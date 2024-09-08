@@ -1,42 +1,24 @@
 {
-  "name": "manchenkoff.github.io",
-  "version": "1.0.0",
+  "name": "manchenkoff",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint:prettier": "prettier --check .",
-    "lint": "npm run lint:js && npm run lint:prettier",
-    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
-    "test": "jest --passWithNoTests"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.6",
-    "core-js": "^3.25.3",
-    "nuxt": "^2.12.2",
-    "vue": "^2.6.14",
-    "vue-server-renderer": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.45.0"
+    "@nuxt/eslint": "^0.5.6",
+    "@nuxt/ui": "^2.18.4",
+    "eslint": "^9.10.0",
+    "nuxt": "^3.13.0",
+    "typescript": "^5.5.4",
+    "vue": "latest",
+    "vue-router": "latest"
   },
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.19.1",
-    "@nuxtjs/eslint-config": "^8.0.0",
-    "@nuxtjs/eslint-module": "^3.0.2",
-    "@nuxtjs/tailwindcss": "^5.3.3",
-    "@vue/test-utils": "^1.3.0",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^29.1.2",
-    "eslint": "^8.24.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-nuxt": "^4.0.0",
-    "eslint-plugin-vue": "^9.5.1",
-    "jest": "^27.4.4",
-    "postcss": "^8.4.17",
-    "prettier": "^2.5.1",
-    "vue-jest": "^3.0.4"
-  }
+  "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
 }
