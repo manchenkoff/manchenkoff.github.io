@@ -1,23 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-
-  future: {
-    compatibilityVersion: 4,
-  },
+  modules: ['@nuxt/ui', '@nuxt/eslint'],
 
   devtools: {
     enabled: true,
   },
-
-  eslint: {
-    config: {
-      stylistic: true,
-      typescript: true,
-    },
-  },
-
-  modules: ['@nuxt/ui', '@nuxt/eslint'],
 
   app: {
     head: {
@@ -42,6 +29,19 @@ export default defineNuxtConfig({
           href: '/favicon.ico',
         },
       ],
+    },
+  },
+
+  future: {
+    compatibilityVersion: 4,
+  },
+
+  compatibilityDate: '2024-04-03',
+
+  eslint: {
+    config: {
+      stylistic: true,
+      typescript: true,
     },
   },
 })
