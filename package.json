@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@nuxt/eslint": "^0.6.1",
+    "@nuxt/eslint": "^0.7.2",
     "@nuxt/ui": "^2.18.7",
     "eslint": "^9.14.0",
     "nuxt": "^3.13.2",
