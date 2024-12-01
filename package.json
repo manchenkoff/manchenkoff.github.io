@@ -14,7 +14,7 @@
   "dependencies": {
     "@nuxt/eslint": "^0.7.2",
     "@nuxt/ui": "^2.18.7",
-    "eslint": "^9.14.0",
+    "eslint": "^9.16.0",
     "nuxt": "^3.13.2",
     "typescript": "^5.6.3",
     "vue": "latest",
