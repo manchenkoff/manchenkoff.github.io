@@ -2,14 +2,20 @@
 const appConfig = useAppConfig()
 
 useHead({
-  titleTemplate: pageTitle => pageTitle ? `${pageTitle} - ${appConfig.title}` : appConfig.title,
+  titleTemplate: pageTitle => pageTitle ? `${pageTitle} - ${appConfig.title}` : `${appConfig.title}`,
 })
+
+const colorMode = useColorMode()
+
+colorMode.preference = 'light'
 </script>
 
 <template>
   <NuxtLoadingIndicator />
   <NuxtLayout>
-    <NuxtPage />
+    <UApp>
+      <NuxtPage />
+    </UApp>
   </NuxtLayout>
 </template>
 
