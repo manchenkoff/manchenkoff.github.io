@@ -15,7 +15,7 @@
     "@nuxt/eslint": "^1.7.1",
     "@nuxt/kit": "^4.0.2",
     "@nuxt/ui": "^3.3.3",
-    "eslint": "^9.32.0",
+    "eslint": "^9.36.0",
     "nuxt": "^4.0.2",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
