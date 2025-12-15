@@ -1,13 +1,24 @@
 <script setup lang="ts">
-//
+const { seo } = useAppConfig()
+
+useSeoMeta({
+  title: seo.title,
+  description: seo.description,
+
+  ogTitle: seo.title,
+  ogDescription: seo.description,
+  ogImage: seo.image,
+  ogUrl: '/',
+
+  twitterTitle: seo.title,
+  twitterDescription: seo.description,
+  twitterImage: seo.image,
+  twitterCard: 'summary',
+})
 </script>
 
 <template>
-  <UCard class="w-96 m-auto mt-20 flex flex-col gap-5 items-center text-center ring-0">
-    <AppLogo />
-    <header>manchenkoff.me</header>
-    <em>coming soon...</em>
-  </UCard>
+  <ProfileCard />
 </template>
 
 <style scoped></style>

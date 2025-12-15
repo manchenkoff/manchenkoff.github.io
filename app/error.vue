@@ -9,10 +9,10 @@ defineProps<ErrorPageProps>()
 </script>
 
 <template>
-  <div class="text-center">
-    <h1>{{ error!.statusCode }}</h1>
-    <NuxtLink to="/">
-      Go back home
-    </NuxtLink>
-  </div>
+  <UError
+    :error="{
+      statusMessage: 'Hmmmm...',
+      message: 'Looks like you are looking for a wrong stuff',
+    }"
+  />
 </template>
