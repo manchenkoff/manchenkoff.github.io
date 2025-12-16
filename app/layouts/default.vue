@@ -25,14 +25,14 @@ useHead({
 </script>
 
 <template>
-  <UMain>
-    <ImageBackground />
+  <ImageBackground />
 
-    <slot />
+  <UMain class="flex flex-col gap-4 justify-center items-center">
+    <UContainer>
+      <slot />
+    </UContainer>
 
-    <div class="flex absolute bottom-4 w-full justify-center md:fixed md:right-4 md:w-fit">
-      <UColorModeSwitch />
-    </div>
+    <UColorModeSwitch />
   </UMain>
 </template>
 
