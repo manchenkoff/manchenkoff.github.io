@@ -16,7 +16,7 @@
     "@iconify-json/simple-icons": "^1.2.69",
     "@nuxt/kit": "^4.2.2",
     "@nuxt/ui": "^4.4.0",
-    "nuxt": "^4.2.2",
+    "nuxt": "^4.3.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
     "vue": "latest",
