@@ -68,7 +68,8 @@ jobs:
             --base main \
             --head deps/bump-${DATE} \
             --title "deps: weekly dependency bump" \
-            --body "Automated dependency upgrade. Please review before merging."
+            --body "Automated dependency upgrade. Please review before merging." \
+            --assignee manchenkoff
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
