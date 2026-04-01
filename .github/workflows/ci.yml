@@ -1,6 +1,6 @@
 name: CI
 env:
-  node_version: 20
+  node_version: 24
 concurrency:
   group: manchenkoff-site-ci
   cancel-in-progress: false
