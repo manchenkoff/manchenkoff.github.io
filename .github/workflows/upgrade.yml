@@ -1,6 +1,8 @@
 name: Upgrade Dependencies
 env:
   node_version: 24
+  git_email: artem@manchenkoff.me
+  git_name: manchenkoff
 on:
   workflow_dispatch:
   schedule:
@@ -29,6 +31,7 @@ jobs:
         run: npx nypm@latest i
       - name: Upgrade dependencies
         run: pnpm upgrade
+
       - name: Check for changes
         id: changed
         run: |
@@ -41,6 +44,13 @@ jobs:
       - name: Lint
         if: steps.changed.outputs.changed == 'true'
         run: pnpm lint
+
+      - name: Configure git
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          git config --global user.email "${{ env.git_email }}"
+          git config --global user.name "${{ env.git_name }}"
+
       - name: Create branch and commit
         if: steps.changed.outputs.changed == 'true'
         run: |
