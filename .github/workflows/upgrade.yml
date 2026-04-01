@@ -1,0 +1,60 @@
+name: Upgrade Dependencies
+env:
+  node_version: 24
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
+jobs:
+  upgrade-deps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.node_version }}
+          package-manager: pnpm
+      - name: Install dependencies
+        run: pnpm install
+      - name: Upgrade dependencies
+        run: pnpm upgrade
+      - name: Check for changes
+        id: changed
+        run: |
+          echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+      - name: Lint
+        if: steps.changed.outputs.changed == 'true'
+        run: pnpm lint
+      - name: Create branch and commit
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          BRANCH="deps/bump-${DATE}"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "chore: upgrade dependencies"
+      - name: Push changes
+        if: steps.changed.outputs.changed == 'true'
+        run: git push -u origin HEAD
+      - name: Create Pull Request
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          gh pr create \
+            --base main \
+            --head deps/bump-${DATE} \
+            --title "deps: weekly dependency bump" \
+            --body "Automated dependency upgrade. Please review before merging."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
