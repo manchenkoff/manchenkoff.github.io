@@ -1,59 +1,44 @@
 name: Publish
-
 env:
-  node_version: 20
-
+  node_version: 24
 on:
   workflow_dispatch: # manual trigger
-
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.node_version }}
-
       - name: Enable corepack
         run: corepack enable
-
       # Issue: https://github.com/cypress-io/github-action/issues/1355
       - name: Set alternate npm integrity keys
         run: |
           echo COREPACK_INTEGRITY_KEYS="$(curl https://registry.npmjs.org/-/npm/v1/keys | jq -c '{npm: .keys}')" >> $GITHUB_ENV
-
       - name: Install dependencies
         run: npx nypm@latest i
-
       - name: Build pages preset
         run: pnpm generate
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./.output/public
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
     permissions:
       pages: write
       id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
