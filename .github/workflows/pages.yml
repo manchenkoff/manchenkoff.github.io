@@ -12,18 +12,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Setup Node
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+      - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.node_version }}
-      - name: Enable corepack
-        run: corepack enable
-      # Issue: https://github.com/cypress-io/github-action/issues/1355
-      - name: Set alternate npm integrity keys
-        run: |
-          echo COREPACK_INTEGRITY_KEYS="$(curl https://registry.npmjs.org/-/npm/v1/keys | jq -c '{npm: .keys}')" >> $GITHUB_ENV
+          cache: pnpm
       - name: Install dependencies
-        run: npx nypm@latest i
+        run: pnpm install
       - name: Build pages preset
         run: pnpm generate
       - name: Upload artifact
