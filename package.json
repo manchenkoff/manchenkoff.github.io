@@ -13,11 +13,11 @@
     "upgrade": "pnpm self-update && npx nuxt upgrade --dedupe && pnpm up && pnpm lint"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.108",
-    "@iconify-json/simple-icons": "^1.2.82",
-    "@nuxt/kit": "^4.4.5",
-    "@nuxt/ui": "^4.7.1",
-    "nuxt": "^4.4.5",
+    "@iconify-json/lucide": "^1.2.109",
+    "@iconify-json/simple-icons": "^1.2.83",
+    "@nuxt/kit": "^4.4.6",
+    "@nuxt/ui": "^4.8.0",
+    "nuxt": "^4.4.6",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
     "vue": "latest",
