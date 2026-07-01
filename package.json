@@ -13,7 +13,7 @@
     "upgrade": "pnpm self-update && npx nuxt upgrade --dedupe && pnpm up && pnpm lint"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.114",
+    "@iconify-json/lucide": "^1.2.115",
     "@iconify-json/simple-icons": "^1.2.87",
     "@nuxt/kit": "^4.4.8",
     "@nuxt/ui": "^4.9.0",
